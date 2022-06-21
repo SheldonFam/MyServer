@@ -9,7 +9,7 @@ const getAllTasks = async (req, res) => {
   }
 };
 
-const createTasks = async (req, res) => {
+const createTask = async (req, res) => {
   try {
     const task = await Task.create(req.body);
     res.status(201).json({ task });
@@ -18,7 +18,7 @@ const createTasks = async (req, res) => {
   }
 };
 
-const getTasks = async (req, res) => {
+const getTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOne({ _id: taskID });
@@ -31,7 +31,7 @@ const getTasks = async (req, res) => {
   }
 };
 
-const deleteTasks = async (req, res) => {
+const deleteTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOneAndDelete({ _id: taskID });
@@ -44,7 +44,7 @@ const deleteTasks = async (req, res) => {
   }
 };
 
-const updateTasks = async (req, res) => {
+const updateTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
@@ -63,8 +63,8 @@ const updateTasks = async (req, res) => {
 
 module.exports = {
   getAllTasks,
-  createTasks,
-  getTasks,
-  updateTasks,
-  deleteTasks,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
 };
